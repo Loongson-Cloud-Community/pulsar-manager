@@ -17,11 +17,11 @@ plugins {
     id "com.github.node-gradle.node" version "3.5.1"
 }
 
-node {
-    version = '16.19.1'
-    npmVersion = '8.19.4'
-    download = true
-}
+//node {
+//    version = '16.17.1'
+//    npmVersion = '9.8.1'
+//    download = false
+//}
 
 npm_run_build {
  // disable default 'npm run build' as we need 'npm run build:prod'

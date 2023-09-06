@@ -16,7 +16,7 @@
 # specific language governing permissions and limitations
 # under the License.
 #
-FROM openjdk:8-jre
+FROM cr.loongnix.cn/library/openjdk:8u352
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -41,29 +41,29 @@ RUN mkdir -p /run/nginx
 
 WORKDIR /pulsar-manager
 
-COPY build/distributions/pulsar-manager.tar .
+COPY pulsar-manager.tar .
 
 RUN tar -xf pulsar-manager.tar
 
 RUN rm -r pulsar-manager.tar
 
-COPY docker/supervisord.conf /etc/
+COPY supervisord.conf /etc/
 
-COPY docker/supervisord-token.conf /etc/
+COPY supervisord-token.conf /etc/
 
-COPY docker/supervisord-private-key.conf /etc/
+COPY supervisord-private-key.conf /etc/
 
-COPY docker/supervisord-secret-key.conf /etc/
+COPY supervisord-secret-key.conf /etc/
 
-COPY docker/supervisord-configuration-file.conf /etc/
+COPY supervisord-configuration-file.conf /etc/
 
-COPY docker/default.conf /etc/nginx/conf.d/
+COPY default.conf /etc/nginx/conf.d/
 
-COPY docker/startup.sh /pulsar-manager/
+COPY startup.sh /pulsar-manager/
 
-COPY docker/init_db.sql /pulsar-manager/
+COPY init_db.sql /pulsar-manager/
 
-COPY docker/entrypoint.sh /pulsar-manager/
+COPY entrypoint.sh /pulsar-manager/
 
 COPY front-end/dist /usr/share/nginx/html/
 
